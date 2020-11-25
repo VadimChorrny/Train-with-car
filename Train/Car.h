@@ -6,23 +6,30 @@ using namespace std;
 class Car
 {
 public:
-	enum class carType { COMPARTMENT, PLACCART, SLEEPING, UNDEFINED };
-	//void getType();
+	enum class carType { SLEEPING, PLACCART, COMPARTMENT, UNDEFINED };
+
 	void print() const;
+
+	// set
+
+	void setTypeCar(const int& typeCars);
+	void setPass(const int& countPassengers);
+	// get
+
 	const char* getTypeStr() const;
 	const size_t& getCountPassengers() const;
-	Car()
-	{
-		type = (carType)(rand() % ((int)carType::SLEEPING + 1));
-		countPassengers = rand() % (maxPlaces[(int)type] + 1);
-	}
-	//static int maxPlaces[] = { 56,36,22 };
 
-	//explicit Car(carType type, size_t countPassengers);
-	//Car();
-	//~Car();
+	// Ctor
+	Car();
+	Car(const int& typeCars, const size_t& countPassengers);
+	~Car();
+	
 private:
+	carType types;
 	carType type = carType::UNDEFINED;
 	size_t countPassengers = 0;
 	const static size_t maxPlaces[];
+	int typeCars;
+	size_t passengers;
+
 };
